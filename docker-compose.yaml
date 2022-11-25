@@ -1,0 +1,21 @@
+version: '3.6'
+
+services:
+  db:
+    image: mysql
+    container_name: mysqlDock
+    restart: always #make a container restart automatically
+    environment: 
+      MYSQL_DATABASE: sampledb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password123
+      MYSQL_ROOT_PASSWORD: password123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql:/var/lib/mysql    
+      - ./dbInit:/docker-entrypoint-initdb.d
+
+volumes:
+  mysql:
+
